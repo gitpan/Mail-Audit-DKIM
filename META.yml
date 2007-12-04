@@ -17,4 +17,4 @@ requires:
   Mail::Audit: 0
   Mail::DKIM: 0
   Sub::Exporter: 0.9
-version: 0.001
+version: 0.002
