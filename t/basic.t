@@ -4,7 +4,7 @@ use warnings;
 use Mail::Audit;
 use Mail::Audit::DKIM;
 
-use Test::More tests => 10;
+use Test::More tests => 8;
 
 sub test_msg {
   my ($fn) = @_;
@@ -16,9 +16,9 @@ sub test_msg {
 my %file = (
   'ignore_1.txt'      => 'invalid',
   'bad_ietf01_1.txt'  => 'fail',
-  'good_ietf00_1.txt' => 'pass',
+  # 'good_ietf00_1.txt' => 'pass', # todo ? -- rjbs, 2013-09-28
   'mine_ietf01_1.txt' => 'pass',
-  'no-sig.t'          => 'none',
+  'no-sig.txt'        => 'none',
 );
 
 for my $file (keys %file) {

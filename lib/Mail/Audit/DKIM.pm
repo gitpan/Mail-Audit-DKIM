@@ -1,12 +1,13 @@
 use strict;
 use warnings;
-
 package Mail::Audit::DKIM;
+{
+  $Mail::Audit::DKIM::VERSION = '0.003';
+}
+# ABSTRACT: Mail::Audit plugin for domain key verification
 use Mail::DKIM::Verifier;
 
-our $VERSION = '0.002';
-
-use Sub::Exporter -setup => {
+use Sub::Exporter 0.900 -setup => {
   into    => 'Mail::Audit',
   exports => [ qw(result result_detail passes) ],
   groups  => [ default => [ -all => { -prefix => 'dkim_' } ] ],
@@ -56,6 +57,10 @@ __END__
 
 Mail::Audit::DKIM - Mail::Audit plugin for domain key verification
 
+=head1 VERSION
+
+version 0.003
+
 =head1 SYNOPSIS
 
   use Mail::Audit qw(DKIM);
@@ -73,28 +78,31 @@ general, consult L<Mail::DKIM> for more information.
 
 =head1 METHODS
 
-=head1 dkim_result
+=head2 dkim_result
 
 This returns the result of the DKIM verifier.
 
-=head1 dkim_result_detail
+=head2 dkim_result_detail
 
 This returns not just the one-word result code, but any available details.
 
-=head1 dkim_passes
+=head2 dkim_passes
 
 This method returns true if the signature was verified.
-
-=head1 PERL EMAIL PROJECT
-
-This module is maintained by the Perl Email Project.
-
-  http://emailproject.perl.org/wiki/Mail::Audit::DKIM
-
-=head1 COPYRIGHT
-
-Copyright 2007, Ricardo SIGNES <rjbs@cpan.org>
 
 =head1 SEE ALSO
 
 L<Mail::Audit>, L<Mail::DKIM>
+
+=head1 AUTHOR
+
+Ricardo SIGNES
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2007 by Ricardo SIGNES.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
